@@ -42,6 +42,7 @@
     if (!session) {return;}
     [self.layer addSublayer:[self setupPreviewLayer]];
     [self setupConnection];
+    [self setupOutput];
     [self setupUIGestureRecognizer];
 }
 
@@ -63,12 +64,8 @@
 }
 
 - (void)setupOutput {
-    NSDictionary* settings = @{(id)kCVPixelBufferPixelFormatTypeKey:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA]};
-    AVCaptureVideoDataOutput* dataOutput = [[AVCaptureVideoDataOutput alloc] init];
-    dataOutput.videoSettings = settings;
-    [dataOutput setSampleBufferDelegate:nil queue:dispatch_get_main_queue()];
     self.imageOutput = [[AVCaptureStillImageOutput alloc] init];
-    [self.session addOutput:self.imageOutput];
+    [_session addOutput:self.imageOutput];
 }
 
 - (AVCaptureVideoPreviewLayer *)setupPreviewLayer {
@@ -115,7 +112,7 @@
 # pragma mark UIGestureRecognizer
 
 - (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
-    NSLog(@"TAPPED!");
+    [self shutterCamera];
 }
 
 @end
