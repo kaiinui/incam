@@ -12,6 +12,7 @@
 @interface KIViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet KIIncam *incam;
 
 @end
 
@@ -21,17 +22,12 @@
 {
     [super viewDidLoad];
     
-    KIIncam *incam = [[KIIncam alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-    [incam startWithDelegate:self];
-    [self.view addSubview:incam];
-    
-	// Do any additional setup after loading the view, typically from a nib.
+    [self.incam startWithDelegate:self];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 # pragma mark - KIIncamDelegate
