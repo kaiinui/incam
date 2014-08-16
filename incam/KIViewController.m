@@ -7,6 +7,7 @@
 //
 
 #import "KIViewController.h"
+#import "KIIncam.h"
 
 @interface KIViewController ()
 
@@ -17,6 +18,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    KIIncam *incam = [[KIIncam alloc] initWithFrame:self.view.frame];
+    [incam startWithDelegate];
+    [self.view addSubview:incam];
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
