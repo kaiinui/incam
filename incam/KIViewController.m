@@ -11,6 +11,8 @@
 
 @interface KIViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 @end
 
 @implementation KIViewController
@@ -19,7 +21,7 @@
 {
     [super viewDidLoad];
     
-    KIIncam *incam = [[KIIncam alloc] initWithFrame:self.view.frame];
+    KIIncam *incam = [[KIIncam alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     [incam startWithDelegate:self];
     [self.view addSubview:incam];
     
@@ -35,8 +37,7 @@
 # pragma mark - KIIncamDelegate
 
 - (void)incamView:(UIView *)incamView captureOutput:(UIImage *)photo {
-    NSLog(@"Delegate Invoked");
-    [self.view addSubview:[[UIImageView alloc] initWithImage:photo]];
+    [self.imageView setImage:photo];
 }
 
 @end
