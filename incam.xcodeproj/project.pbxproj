@@ -21,6 +21,7 @@
 		D4DFFA7F199F7EEA009EFFC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4DFFA61199F7EEA009EFFC4 /* UIKit.framework */; };
 		D4DFFA87199F7EEA009EFFC4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4DFFA85199F7EEA009EFFC4 /* InfoPlist.strings */; };
 		D4DFFA89199F7EEA009EFFC4 /* incamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DFFA88199F7EEA009EFFC4 /* incamTests.m */; };
+		D4DFFA95199F7FB4009EFFC4 /* KIIncam.m in Sources */ = {isa = PBXBuildFile; fileRef = D4DFFA94199F7FB4009EFFC4 /* KIIncam.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		D4DFFA84199F7EEA009EFFC4 /* incamTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "incamTests-Info.plist"; sourceTree = "<group>"; };
 		D4DFFA86199F7EEA009EFFC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D4DFFA88199F7EEA009EFFC4 /* incamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = incamTests.m; sourceTree = "<group>"; };
+		D4DFFA93199F7FB4009EFFC4 /* KIIncam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KIIncam.h; sourceTree = "<group>"; };
+		D4DFFA94199F7FB4009EFFC4 /* KIIncam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KIIncam.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,7 @@
 		D4DFFA63199F7EEA009EFFC4 /* incam */ = {
 			isa = PBXGroup;
 			children = (
+				D4DFFA92199F7FA1009EFFC4 /* Classes */,
 				D4DFFA6C199F7EEA009EFFC4 /* KIAppDelegate.h */,
 				D4DFFA6D199F7EEA009EFFC4 /* KIAppDelegate.m */,
 				D4DFFA6F199F7EEA009EFFC4 /* Main.storyboard */,
@@ -150,6 +154,15 @@
 				D4DFFA85199F7EEA009EFFC4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D4DFFA92199F7FA1009EFFC4 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D4DFFA93199F7FB4009EFFC4 /* KIIncam.h */,
+				D4DFFA94199F7FB4009EFFC4 /* KIIncam.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4DFFA95199F7FB4009EFFC4 /* KIIncam.m in Sources */,
 				D4DFFA74199F7EEA009EFFC4 /* KIViewController.m in Sources */,
 				D4DFFA6E199F7EEA009EFFC4 /* KIAppDelegate.m in Sources */,
 				D4DFFA6A199F7EEA009EFFC4 /* main.m in Sources */,
