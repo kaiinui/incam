@@ -4,17 +4,13 @@ incam
 [iOS] You might not need to open modal to take a picture.
 
 ```objc
-# Objective-C
-KIIncam incam = [[KIIncam alloc] init];
+KIIncamView incam = [[KIIncam alloc] initWithFrame:self.view.frame];
 [self.view addSubview:incam];
-incam.delegate = self;
-[incam start];
+[incam startWithDelegate:self];
 ```
 
-```swift
-# Swift
-let incam = KIIncam()
-self.view.addSubview(incam)
-incam.delegate = self
-incam.start()
+And implement delegate.
+
+```objc
+- (void)incamView:(UIView *)incamView captureOutput:(UIImage *)photo;
 ```
