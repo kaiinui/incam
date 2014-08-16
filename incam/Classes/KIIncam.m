@@ -4,6 +4,7 @@
 @interface KIIncam ()
 
 @property AVCaptureSession *session;
+@property AVCaptureStillImageOutput *imageOutput;
 @property AVCaptureVideoPreviewLayer *previewLayer;
 @property (nonatomic, weak) id<KIIncamDelegate> delegate;
 
@@ -61,6 +62,15 @@
     return [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
 }
 
+- (void)setupOutput {
+    NSDictionary* settings = @{(id)kCVPixelBufferPixelFormatTypeKey:[NSNumber numberWithInt:kCVPixelFormatType_32BGRA]};
+    AVCaptureVideoDataOutput* dataOutput = [[AVCaptureVideoDataOutput alloc] init];
+    dataOutput.videoSettings = settings;
+    [dataOutput setSampleBufferDelegate:nil queue:dispatch_get_main_queue()];
+    self.imageOutput = [[AVCaptureStillImageOutput alloc] init];
+    [self.session addOutput:self.imageOutput];
+}
+
 - (AVCaptureVideoPreviewLayer *)setupPreviewLayer {
     _previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:_session];
     [_previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
@@ -82,6 +92,24 @@
 
 - (void)invokeDelegateWithImage:(UIImage *)image {
     [self.delegate incamView:self captureOutput:image];
+}
+
+- (void)invokeDelegateWithData:(NSData *)data {
+    UIImage *image = [self imageWithData:data];
+    [self invokeDelegateWithImage:image];
+}
+
+- (UIImage *)imageWithData:(NSData *)data {
+    return [UIImage imageWithData:data];
+}
+
+- (void)shutterCamera {
+    AVCaptureConnection *connection = [[self.imageOutput connections] lastObject];
+    [self.imageOutput captureStillImageAsynchronouslyFromConnection:connection
+                                                  completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+                                                      NSData *data = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+                                                      [self invokeDelegateWithData:data];
+                                                  }];
 }
 
 # pragma mark UIGestureRecognizer

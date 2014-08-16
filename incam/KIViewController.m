@@ -32,4 +32,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+# pragma mark - KIIncamDelegate
+
+- (void)incamView:(UIView *)incamView captureOutput:(UIImage *)photo {
+    NSLog(@"Delegate Invoked");
+    [self.view addSubview:[[UIImageView alloc] initWithImage:photo]];
+}
+
 @end

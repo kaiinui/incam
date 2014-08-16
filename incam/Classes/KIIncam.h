@@ -2,6 +2,8 @@
 
 @protocol KIIncamDelegate <NSObject>
 
+@required
+
 - (void)incamView:(UIView *)incamView captureOutput:(UIImage *)photo;
 
 @end

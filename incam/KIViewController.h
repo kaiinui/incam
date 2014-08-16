@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol KIIncamDelegate @end
+#import "Classes/KIIncam.h"
 
 @interface KIViewController : UIViewController <KIIncamDelegate>
 
