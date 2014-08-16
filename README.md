@@ -25,6 +25,11 @@ And implement delegate method.
 - (void)incamView:(UIView *)incamView captureOutput:(UIImage *)photo;
 ```
 
+Installation
+---
+
+`pod 'KIIncam'`
+
 LICENSE
 ---
 
