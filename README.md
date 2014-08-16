@@ -1,7 +1,7 @@
 incam
 =====
 
-Inspired by Facebook Messenger's inline camera. **People might not need to open modal to take a picture.**
+Inspired by Facebook Messenger's inline camera. **People might not need to open a modal to take a picture.**
 
 ![](https://raw.githubusercontent.com/kaiinui/incam/master/KIIncamSS.gif)
 
