@@ -20,7 +20,7 @@
     [super viewDidLoad];
     
     KIIncam *incam = [[KIIncam alloc] initWithFrame:self.view.frame];
-    [incam startWithDelegate];
+    [incam startWithDelegate:self];
     [self.view addSubview:incam];
     
 	// Do any additional setup after loading the view, typically from a nib.

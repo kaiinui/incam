@@ -5,6 +5,7 @@
 
 @property AVCaptureSession *session;
 @property AVCaptureVideoPreviewLayer *previewLayer;
+@property (nonatomic, weak) id<KIIncamDelegate> delegate;
 
 @end
 
@@ -27,7 +28,9 @@
     return self;
 }
 
-- (void)startWithDelegate {
+- (void)startWithDelegate:(id<KIIncamDelegate>)delegate {
+    
+    self.delegate = delegate;
     [_session startRunning];
 }
 
@@ -38,6 +41,7 @@
     if (!session) {return;}
     [self.layer addSublayer:[self setupPreviewLayer]];
     [self setupConnection];
+    [self setupUIGestureRecognizer];
 }
 
 - (AVCaptureSession *)setupSession {
@@ -68,6 +72,22 @@
     AVCaptureConnection *connection = _previewLayer.connection;
     connection.videoOrientation = AVCaptureVideoOrientationPortrait;
     return connection;
+}
+
+- (void)setupUIGestureRecognizer {
+    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapFrom:)];
+    [self addGestureRecognizer:recognizer];
+    recognizer.delegate = self;
+}
+
+- (void)invokeDelegateWithImage:(UIImage *)image {
+    [self.delegate incamView:self captureOutput:image];
+}
+
+# pragma mark UIGestureRecognizer
+
+- (void)handleTapFrom:(UITapGestureRecognizer *)recognizer {
+    NSLog(@"TAPPED!");
 }
 
 @end

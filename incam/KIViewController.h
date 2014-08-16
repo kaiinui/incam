@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KIViewController : UIViewController
+@protocol KIIncamDelegate @end
+
+@interface KIViewController : UIViewController <KIIncamDelegate>
 
 @end

@@ -6,11 +6,11 @@
 
 @end
 
-@interface KIIncam : UIView
+@interface KIIncam : UIView <UIGestureRecognizerDelegate>
 
 - (id)initWithCoder:(NSCoder *)aDecoder;
 - (id)initWithFrame:(CGRect)frame;
 
-- (void)startWithDelegate;
+- (void)startWithDelegate:(id<KIIncamDelegate>)delegate;
 
 @end
